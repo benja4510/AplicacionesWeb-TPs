@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huellitas - Servicios</title>
+</head>
+<body>
+    <header>
+        <a href="./index.html" aria-label="Ir a Inicio">
+            <img src="./recursos/imagenes/huella.png" alt="logo tienda" width="60" height="60">
+        </a>
+        
+        <nav aria-label="Navegación principal">
+            <ul>
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./catalogo.html">Catalogo</a></li>
+                <li><a href="./servicios.html" aria-current="page">Servicios</a></li>
+                <li><a href="./carrito.html">Carrito</a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Servicios de Estética y Cuidado</h1>
+        
+        <section>
+            <h2>Reservá un turno para tu mascota</h2>
+            <form action="./confirmacion.html" method="get">
+                <fieldset>
+                    <legend>Datos de la Reserva</legend>
+
+                    <div>
+                        <label for="id-nombre-dueno">Nombre del Dueño/a:</label>
+                        <input type="text" id="id-nombre-dueno" name="nombre_dueno" required>
+                    </div>
+
+                    <div>
+                        <label for="id-servicio-tipo">Servicio:</label>
+                        <select id="id-servicio-tipo" name="servicio">
+                            <option value="bano">Baño</option>
+                            <option value="peluqueria">Peluquería</option>
+                            <option value="completo">Baño y Peluquería Completo</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="id-fecha">Fecha del turno:</label>
+                        <input type="date" id="id-fecha" name="fecha_turno" required>
+                    </div>
+
+                    <div>
+                        <label for="id-hora">Horario preferido:</label>
+                        <input type="time" id="id-hora" name="hora_turno" required>
+                    </div>
+                </fieldset>
+
+                <div>
+                    <button type="submit">Confirmar Reserva</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li>
+                <a href="https://instagram.com/@Huellitas" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Huellitas">
+                    @Huellitas
+                </a>
+            </li>
+            <li>
+                San Lorenzo 600 - Bº Nueva Cordoba 
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>
