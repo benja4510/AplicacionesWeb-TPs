@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huellitas - Catalogo</title>
+    <link rel="stylesheet" href="./recursos/css/estilos.css">
+</head>
+<body class="pagina">
+    <header class="cabecera">
+        <a class="cabecera__logo" href="./index.html" aria-label="Ir a Inicio">
+            <img class="cabecera__imagen" src="./recursos/imagenes/huella.png" alt="logo tienda" width="60" height="60">
+        </a>
+
+        <nav class="menu" aria-label="Navegación principal">
+            <ul class="menu__lista">
+                <li class="menu__item"><a class="menu__enlace" href="./index.html">Inicio</a></li>
+                <li class="menu__item"><a class="menu__enlace menu__enlace--activo" href="./catalogo.html" aria-current="page">Catalogo</a></li>
+                <li class="menu__item"><a class="menu__enlace" href="./servicios.html">Servicios</a></li>
+                <li class="menu__item"><a class="menu__enlace" href="./carrito.html">Carrito</a></li>
+                <li class="menu__item"><a class="menu__enlace" href="./contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="principal">
+        <h1 class="titulo-pagina">Catalogo</h1>
+
+        <section class="seccion">
+            <h2 class="seccion__titulo">Productos</h2>
+            <div class="catalogo__grilla">
+                <article class="producto">
+                    <h3 class="producto__titulo">Correa Reforzada</h3>
+                    <picture class="producto__figura">
+                        <img class="producto__imagen" src="./recursos/imagenes/productos/correa.jpg" alt="Perro mediano con Correa" width="200">
+                    </picture>
+                    <p class="producto__descripcion">Correa de paseo alta durabilidad</p>
+                    <ul class="producto__detalles">
+                        <li class="producto__detalle">Talles S M L</li>
+                        <li class="producto__detalle producto__detalle--precio">Precio $5000</li>
+                    </ul>
+                    <button class="boton boton--primario producto__boton" type="button" aria-label="Agregar Correa al Carrito">Agregar al Carrito</button>
+                </article>
+
+                <article class="producto">
+                    <h3 class="producto__titulo">Alimento Premium Perro</h3>
+                    <picture class="producto__figura">
+                        <img class="producto__imagen" src="./recursos/imagenes/productos/alimento.jpg" alt="Bolsa de alimento para perros" width="200">
+                    </picture>
+                    <p class="producto__descripcion">Alimento balanceado 15kg</p>
+                    <ul class="producto__detalles">
+                        <li class="producto__detalle">Sabor Pollo y Carne</li>
+                        <li class="producto__detalle producto__detalle--precio">Precio $13500</li>
+                    </ul>
+                    <button class="boton boton--primario producto__boton" type="button" aria-label="Agregar Alimento al Carrito">Agregar al Carrito</button>
+                </article>
+
+                <article class="producto">
+                    <h3 class="producto__titulo">Shampoo Neutro Mascota</h3>
+                    <picture class="producto__figura">
+                        <img class="producto__imagen" src="./recursos/imagenes/productos/shampoo.jpg" alt="Botella de shampoo para mascotas" width="200">
+                    </picture>
+                    <p class="producto__descripcion">Shampoo para higiene y cuidado de pelaje</p>
+                    <ul class="producto__detalles">
+                        <li class="producto__detalle">Contenido 500ml</li>
+                        <li class="producto__detalle producto__detalle--precio">Precio $3200</li>
+                    </ul>
+                    <button class="boton boton--primario producto__boton" type="button" aria-label="Agregar Shampoo al Carrito">Agregar al Carrito</button>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="pie">
+        <ul class="pie__lista">
+            <li class="pie__item">
+                <a class="pie__enlace" href="https://instagram.com/@Huellitas" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Huellitas">
+                    @Huellitas
+                </a>
+            </li>
+            <li class="pie__item">
+                San Lorenzo 600 - Bº Nueva Cordoba
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>

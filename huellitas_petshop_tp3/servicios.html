@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huellitas - Servicios</title>
+    <link rel="stylesheet" href="./recursos/css/estilos.css">
+</head>
+<body class="pagina">
+    <header class="cabecera">
+        <a class="cabecera__logo" href="./index.html" aria-label="Ir a Inicio">
+            <img class="cabecera__imagen" src="./recursos/imagenes/huella.png" alt="logo tienda" width="60" height="60">
+        </a>
+
+        <nav class="menu" aria-label="Navegación principal">
+            <ul class="menu__lista">
+                <li class="menu__item"><a class="menu__enlace" href="./index.html">Inicio</a></li>
+                <li class="menu__item"><a class="menu__enlace" href="./catalogo.html">Catalogo</a></li>
+                <li class="menu__item"><a class="menu__enlace menu__enlace--activo" href="./servicios.html" aria-current="page">Servicios</a></li>
+                <li class="menu__item"><a class="menu__enlace" href="./carrito.html">Carrito</a></li>
+                <li class="menu__item"><a class="menu__enlace" href="./contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="principal">
+        <h1 class="titulo-pagina">Servicios de Estética y Cuidado</h1>
+
+        <section class="seccion">
+            <h2 class="seccion__titulo">Reservá un turno para tu mascota</h2>
+            <form class="formulario" action="./confirmacion.html" method="get">
+                <fieldset class="formulario__grupo">
+                    <legend class="formulario__leyenda">Datos de la Reserva</legend>
+
+                    <div class="formulario__campo">
+                        <label class="formulario__etiqueta" for="id-nombre-dueno">Nombre del Dueño/a:</label>
+                        <input class="formulario__control" type="text" id="id-nombre-dueno" name="nombre_dueno" required>
+                    </div>
+
+                    <div class="formulario__campo">
+                        <label class="formulario__etiqueta" for="id-servicio-tipo">Servicio:</label>
+                        <select class="formulario__control" id="id-servicio-tipo" name="servicio">
+                            <option value="bano">Baño</option>
+                            <option value="peluqueria">Peluquería</option>
+                            <option value="completo">Baño y Peluquería Completo</option>
+                        </select>
+                    </div>
+
+                    <div class="formulario__campo">
+                        <label class="formulario__etiqueta" for="id-fecha">Fecha del turno:</label>
+                        <input class="formulario__control" type="date" id="id-fecha" name="fecha_turno" required>
+                    </div>
+
+                    <div class="formulario__campo">
+                        <label class="formulario__etiqueta" for="id-hora">Horario preferido:</label>
+                        <input class="formulario__control" type="time" id="id-hora" name="hora_turno" required>
+                    </div>
+                </fieldset>
+
+                <div class="formulario__acciones">
+                    <button class="boton boton--primario" type="submit">Confirmar Reserva</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="pie">
+        <ul class="pie__lista">
+            <li class="pie__item">
+                <a class="pie__enlace" href="https://instagram.com/@Huellitas" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Huellitas">
+                    @Huellitas
+                </a>
+            </li>
+            <li class="pie__item">
+                San Lorenzo 600 - Bº Nueva Cordoba
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>

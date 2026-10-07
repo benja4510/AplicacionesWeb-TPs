@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huellitas - Carrito de Compras</title>
+    <link rel="stylesheet" href="./recursos/css/estilos.css">
+</head>
+<body class="pagina">
+    <header class="cabecera">
+        <a class="cabecera__logo" href="./index.html" aria-label="Ir a Inicio">
+            <img class="cabecera__imagen" src="./recursos/imagenes/huella.png" alt="logo tienda" width="60" height="60">
+        </a>
+
+        <nav class="menu" aria-label="Navegación principal">
+            <ul class="menu__lista">
+                <li class="menu__item"><a class="menu__enlace" href="./index.html">Inicio</a></li>
+                <li class="menu__item"><a class="menu__enlace" href="./catalogo.html">Catalogo</a></li>
+                <li class="menu__item"><a class="menu__enlace" href="./servicios.html">Servicios</a></li>
+                <li class="menu__item"><a class="menu__enlace menu__enlace--activo" href="./carrito.html" aria-current="page">Carrito</a></li>
+                <li class="menu__item"><a class="menu__enlace" href="./contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="principal">
+        <h1 class="titulo-pagina">Tu Carrito de Compras</h1>
+
+        <section class="seccion">
+            <h2 class="seccion__titulo">Productos Seleccionados</h2>
+            <ul class="carrito__lista">
+                <li class="carrito__item">
+                    <article class="item-carrito">
+                        <h3 class="item-carrito__titulo">Alimento Premium Perro 15kg</h3>
+                        <p class="item-carrito__dato">Cantidad: 1</p>
+                        <p class="item-carrito__dato">Precio unitario: $13.500</p>
+                        <p class="item-carrito__subtotal">Subtotal: $13.500</p>
+                        <button class="boton boton--peligro item-carrito__eliminar" type="button" aria-label="Eliminar Alimento del carrito">Eliminar</button>
+                    </article>
+                </li>
+                <li class="carrito__item">
+                    <article class="item-carrito">
+                        <h3 class="item-carrito__titulo">Correa Reforzada</h3>
+                        <p class="item-carrito__dato">Cantidad: 2</p>
+                        <p class="item-carrito__dato">Precio unitario: $5.000</p>
+                        <p class="item-carrito__subtotal">Subtotal: $10.000</p>
+                        <button class="boton boton--peligro item-carrito__eliminar" type="button" aria-label="Eliminar Correa del carrito">Eliminar</button>
+                    </article>
+                </li>
+            </ul>
+
+            <div class="carrito__total">
+                <h3 class="carrito__total-texto">Total a Pagar: $23.500</h3>
+            </div>
+        </section>
+
+        <section class="seccion">
+            <h2 class="seccion__titulo">Datos para la Entrega y Pago</h2>
+            <form class="formulario" action="./confirmacion.html" method="get">
+                <fieldset class="formulario__grupo">
+                    <legend class="formulario__leyenda">Información Personal y Envío</legend>
+
+                    <div class="formulario__campo">
+                        <label class="formulario__etiqueta" for="id-nombre-compra">Nombre Completo:</label>
+                        <input class="formulario__control" type="text" id="id-nombre-compra" name="nombre_comprador" required>
+                    </div>
+
+                    <div class="formulario__campo">
+                        <label class="formulario__etiqueta" for="id-email">Correo Electrónico:</label>
+                        <input class="formulario__control" type="email" id="id-email" name="email" required>
+                    </div>
+
+                    <div class="formulario__campo">
+                        <label class="formulario__etiqueta" for="id-direccion">Dirección de Entrega:</label>
+                        <input class="formulario__control" type="text" id="id-direccion" name="direccion" required>
+                    </div>
+
+                    <div class="formulario__campo">
+                        <label class="formulario__etiqueta" for="id-metodo-pago">Medio de Pago:</label>
+                        <select class="formulario__control" id="id-metodo-pago" name="metodo_pago">
+                            <option value="efectivo">Efectivo al retirar</option>
+                            <option value="tarjeta">Tarjeta de Crédito / Débito</option>
+                            <option value="transferencia">Transferencia Bancaria</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <div class="formulario__acciones">
+                    <a class="boton boton--secundario" href="./catalogo.html">Seguir Comprando</a>
+                    <button class="boton boton--primario" type="submit">Finalizar Compra</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="pie">
+        <ul class="pie__lista">
+            <li class="pie__item">
+                <a class="pie__enlace" href="https://instagram.com/@Huellitas" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Huellitas">
+                    @Huellitas
+                </a>
+            </li>
+            <li class="pie__item">
+                San Lorenzo 600 - Bº Nueva Cordoba
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>

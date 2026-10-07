@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huellitas - Contacto</title>
+    <link rel="stylesheet" href="./recursos/css/estilos.css">
+</head>
+<body class="pagina">
+    <header class="cabecera">
+        <a class="cabecera__logo" href="./index.html" aria-label="Ir a Inicio">
+            <img class="cabecera__imagen" src="./recursos/imagenes/huella.png" alt="logo tienda" width="60" height="60">
+        </a>
+
+        <nav class="menu" aria-label="Navegación principal">
+            <ul class="menu__lista">
+                <li class="menu__item"><a class="menu__enlace" href="./index.html">Inicio</a></li>
+                <li class="menu__item"><a class="menu__enlace" href="./catalogo.html">Catalogo</a></li>
+                <li class="menu__item"><a class="menu__enlace" href="./servicios.html">Servicios</a></li>
+                <li class="menu__item"><a class="menu__enlace" href="./carrito.html">Carrito</a></li>
+                <li class="menu__item"><a class="menu__enlace menu__enlace--activo" href="./contacto.html" aria-current="page">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="principal">
+        <h1 class="titulo-pagina">Contacto</h1>
+
+        <section class="seccion">
+            <h2 class="seccion__titulo">Escribinos tu consulta</h2>
+            <form class="formulario" action="./contacto.html" method="post">
+                <fieldset class="formulario__grupo">
+                    <legend class="formulario__leyenda">Formulario de Consulta</legend>
+
+                    <div class="formulario__campo">
+                        <label class="formulario__etiqueta" for="id-nombre">Nombre:</label>
+                        <input class="formulario__control" type="text" name="nombre" id="id-nombre" required>
+                    </div>
+
+                    <div class="formulario__campo">
+                        <label class="formulario__etiqueta" for="id-telefono">Teléfono:</label>
+                        <input class="formulario__control" type="tel" name="telefono" id="id-telefono">
+                    </div>
+
+                    <div class="formulario__campo">
+                        <label class="formulario__etiqueta" for="id-tamaño-mascota">Tamaño de mascota:</label>
+                        <select class="formulario__control" name="tamaño-mascota" id="id-tamaño-mascota">
+                            <option value="C">Chico</option>
+                            <option value="M">Mediano</option>
+                            <option value="G">Grande</option>
+                        </select>
+                    </div>
+
+                    <div class="formulario__campo">
+                        <label class="formulario__etiqueta" for="id-edad">Edad:</label>
+                        <input class="formulario__control" type="number" name="edad" id="id-edad">
+                    </div>
+
+                    <div class="formulario__campo">
+                        <label class="formulario__etiqueta" for="id-comentario">Comentario sobre la mascota:</label>
+                        <textarea class="formulario__control formulario__control--area" name="comentario" id="id-comentario" rows="4"></textarea>
+                    </div>
+                </fieldset>
+
+                <div class="formulario__acciones">
+                    <button class="boton boton--secundario" type="reset">Limpiar</button>
+                    <button class="boton boton--primario" type="submit">Enviar Consulta</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="seccion mapa">
+            <h2 class="seccion__titulo">Dónde Estamos</h2>
+            <iframe
+                class="mapa__iframe"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3404.5849554458846!2d-64.18168492325253!3d-31.425559396696883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432a29115cfcf0f%3A0xe548e61630db3a2c!2sSan%20Lorenzo%20600%2C%20X5000%20AZL%2C%20C%C3%B3rdoba!5e0!3m2!1ses!2sar!4v1789580905050!5m2!1ses!2sar"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                title="Ubicación Google Maps de Huellitas en San Lorenzo 600">
+            </iframe>
+        </section>
+    </main>
+
+    <footer class="pie">
+        <ul class="pie__lista">
+            <li class="pie__item">
+                <a class="pie__enlace" href="https://instagram.com/@Huellitas" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Huellitas">
+                    @Huellitas
+                </a>
+            </li>
+            <li class="pie__item">
+                San Lorenzo 600 - Bº Nueva Cordoba
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>

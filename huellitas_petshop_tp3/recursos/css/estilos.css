@@ -1,0 +1,491 @@
+/* 
+   Nombres de las clases: se usa BEM, que es así:
+     bloque__parte--variante
+   Ejemplos:
+     .producto           -> el bloque (la tarjeta del producto)
+     .producto__titulo   -> una parte de ese bloque
+     .boton--primario    -> otra versión del mismo botón
+
+   Primero se hace el diseño para celular y después, con media queries,
+   se adapta a tablet (768px) y a compu (1024px).
+*/
+
+
+/* COLORES (se definen una vez y se usan en toda la página) */
+:root {
+    --verde: #0f5c63;
+    --verde-oscuro: #0a4147;
+    --amarillo: #f4b73f;
+    --fondo: #f5f9fa;
+    --borde: #cfe0e3;
+    --rojo: #b3412f;
+}
+
+
+/* SELECTOR UNIVERSAL */
+* {
+    box-sizing: border-box;
+}
+
+/* SELECTORES DE ELEMENTO */
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+.pagina {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    background: var(--fondo);
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.principal {
+    flex: 1;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 15px;
+}
+
+.titulo-pagina {
+    margin-top: 0;
+    font-size: 28px;
+    color: var(--verde-oscuro);
+}
+
+.seccion {
+    margin-bottom: 30px;
+}
+
+.seccion__titulo {
+    display: inline-block;
+    margin: 0 0 15px;
+    font-size: 22px;
+    border-bottom: 4px solid var(--amarillo);
+}
+
+
+/* CABECERA Y MENÚ */
+.cabecera {
+    /* sticky: la cabecera se queda pegada arriba cuando bajo por la página */
+    position: sticky;
+    top: 0;
+    z-index: 10; /* para que quede por encima del resto del contenido */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background: var(--verde);
+}
+
+.cabecera__logo {
+    display: flex;
+    padding: 5px;
+    border-radius: 50%;
+    background: var(--amarillo);
+}
+
+.cabecera__imagen {
+    width: 50px;
+    height: 50px;
+}
+
+.menu__lista {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.menu__enlace {
+    display: block;
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu__enlace:hover {
+    background: var(--verde-oscuro);
+}
+
+/* el link de la página actual */
+.menu__enlace--activo {
+    background: var(--amarillo);
+    color: #222;
+}
+
+.menu__enlace--activo:hover {
+    background: var(--amarillo);
+}
+
+
+/* BOTONES */
+.boton {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* botón principal: verde lleno */
+.boton--primario {
+    background: var(--verde);
+    color: white;
+}
+
+.boton--primario:hover {
+    background: var(--verde-oscuro);
+}
+
+/* botón secundario: solo el borde */
+.boton--secundario {
+    background: white;
+    border-color: var(--verde);
+    color: var(--verde);
+}
+
+.boton--secundario:hover {
+    background: var(--verde);
+    color: white;
+}
+
+/* botón de eliminar: rojo */
+.boton--peligro {
+    background: white;
+    border-color: var(--rojo);
+    color: var(--rojo);
+}
+
+.boton--peligro:hover {
+    background: var(--rojo);
+    color: white;
+}
+
+
+/* INICIO */
+.portada__imagen {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.destacado {
+    max-width: 600px;
+    padding: 20px;
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+}
+
+.destacado__titulo {
+    margin-top: 0;
+}
+
+
+/* CATÁLOGO */
+.catalogo__grilla {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.producto {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.producto__titulo {
+    margin: 0;
+    padding: 15px 15px 10px;
+    font-size: 20px;
+}
+
+.producto__imagen {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.producto__descripcion {
+    margin: 0;
+    padding: 15px 15px 5px;
+}
+
+.producto__detalles {
+    margin-bottom: auto;
+    padding: 0 15px;
+}
+
+.producto__detalle--precio {
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--verde);
+}
+
+.producto__boton {
+    margin: 15px;
+}
+
+
+/* CARRITO */
+.carrito__lista {
+    display: grid;
+    gap: 15px;
+}
+
+.item-carrito {
+    padding: 15px;
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+}
+
+.item-carrito__titulo {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.item-carrito__dato {
+    margin: 0;
+}
+
+.item-carrito__subtotal {
+    margin: 0;
+    font-weight: bold;
+}
+
+.item-carrito__eliminar {
+    margin-top: 10px;
+}
+
+.carrito__total {
+    margin-top: 20px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background: var(--verde);
+    color: white;
+    text-align: right;
+}
+
+.carrito__total-texto {
+    margin: 0;
+    font-size: 22px;
+}
+
+
+/* FORMULARIOS */
+.formulario {
+    max-width: 700px;
+    padding: 20px;
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+}
+
+.formulario__grupo {
+    margin: 0 0 20px;
+    padding: 0;
+    border: 0;
+}
+
+.formulario__leyenda {
+    padding: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--verde-oscuro);
+}
+
+.formulario__campo {
+    margin-bottom: 15px;
+}
+
+.formulario__etiqueta {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.formulario__control {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid var(--borde);
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.formulario__control:focus {
+    border-color: var(--verde);
+}
+
+/* el cuadro de comentario (textarea) */
+.formulario__control--area {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.formulario__acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* MAPA DE CONTACTO */
+.mapa__iframe {
+    display: block;
+    width: 100%;
+    height: 300px;
+    border: 0;
+    border-radius: 10px;
+}
+
+
+/* CONFIRMACIÓN */
+.confirmacion {
+    max-width: 600px;
+}
+
+.resumen {
+    padding: 20px;
+    background: white;
+    border: 1px solid var(--borde);
+    border-left: 6px solid var(--amarillo);
+    border-radius: 10px;
+}
+
+.resumen__titulo {
+    margin-top: 0;
+}
+
+.resumen__item {
+    padding: 8px 0;
+    border-top: 1px solid var(--borde);
+}
+
+.confirmacion__volver {
+    margin-top: 20px;
+}
+
+
+/* PIE DE PÁGINA */
+.pie {
+    padding: 20px 15px;
+    background: var(--verde-oscuro);
+    color: white;
+    text-align: center;
+}
+
+.pie__enlace {
+    color: var(--amarillo);
+    font-weight: bold;
+}
+
+
+/* MEDIA QUERIES */
+
+/* Tablet: pantallas de 768px o más */
+@media (min-width: 768px) {
+    .titulo-pagina {
+        font-size: 38px;
+    }
+
+    /* el logo queda a la izquierda y el menú a la derecha */
+    .cabecera {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 15px 40px;
+    }
+
+    /* el catálogo pasa a 2 columnas */
+    .catalogo__grilla {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* cada producto del carrito queda en una sola fila */
+    .item-carrito {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr auto;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .item-carrito__titulo,
+    .item-carrito__eliminar {
+        margin: 0;
+    }
+
+    /* en los formularios la etiqueta va al lado del campo */
+    .formulario {
+        padding: 30px;
+    }
+
+    .formulario__campo {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 15px;
+    }
+
+    .formulario__etiqueta {
+        margin: 0;
+        padding-top: 8px;
+    }
+
+    .formulario__acciones {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .mapa__iframe {
+        height: 450px;
+    }
+
+    .pie {
+        display: flex;
+        justify-content: center;
+    }
+
+    .pie__lista {
+        display: flex;
+        gap: 40px;
+    }
+}
+
+/* Compu: pantallas de 1024px o más */
+@media (min-width: 1024px) {
+    /* el catálogo pasa a 3 columnas */
+    .catalogo__grilla {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .portada__imagen {
+        max-height: 400px;
+        object-fit: cover;
+    }
+}
