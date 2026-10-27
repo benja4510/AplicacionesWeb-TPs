@@ -1,0 +1,673 @@
+/*
+
+   NOMBRES DE CLASES
+   - Los componentes usan BEM: bloque__elemento--modificador.
+     Los bloques tienen nombres con sentido, que dicen qué son
+     (.header-principal, .menu-principal, .tarjeta-producto, etc.).
+   - Para que los nombres no queden larguísimos, a las etiquetas simples
+     que están adentro de un bloque (a, img, h3, p, li...) se estilizan con
+     selectores combinados, sin ponerles una clase a cada una:
+         .menu-principal a      en vez de      .menu-principal__enlace
+   - Se reserva las clases BEM (__elemento o --modificador) para lo que
+     realmente hace falta distinguir, por ejemplo .boton--peligro.
+
+   El diseño está hecho primero para celular y, con media queries,
+   se adapta a tablet (768px) y a compu (1024px).
+*/
+
+
+/* COLORES (los defino una vez y los uso en toda la página) */
+:root {
+    --verde: #0f5c63;
+    --verde-oscuro: #0a4147;
+    --amarillo: #f4b73f;
+    --fondo: #f5f9fa;
+    --borde: #cfe0e3;
+    --rojo: #b3412f;
+}
+
+
+/* SELECTOR UNIVERSAL Y DE ETIQUETAS */
+* {
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: var(--verde);
+}
+
+
+/* ESTRUCTURA DE LA PÁGINA (body, main) */
+.pagina-huellitas {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    background: var(--fondo);
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.contenido-principal {
+    flex: 1;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 15px;
+}
+
+.contenido-principal h1 {
+    margin-top: 0;
+    font-size: 28px;
+    color: var(--verde-oscuro);
+}
+
+
+.contenido-principal > section {
+    margin-bottom: 30px;
+}
+
+.contenido-principal > section > h2 {
+    display: inline-block;
+    margin: 0 0 15px;
+    font-size: 22px;
+    border-bottom: 4px solid var(--amarillo);
+}
+
+
+/* HEADER Y MENÚ */
+.header-principal {
+    /* sticky: el header se queda pegado arriba cuando bajo por la página */
+    position: sticky;
+    top: 0;
+    z-index: 10; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background: var(--verde);
+}
+
+.header-principal__logo {
+    display: flex;
+    padding: 5px;
+    border-radius: 50%;
+    background: var(--amarillo);
+}
+
+.header-principal__logo img {
+    width: 50px;
+    height: 50px;
+}
+
+.menu-principal ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.menu-principal a {
+    display: block;
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu-principal a:hover {
+    background: var(--verde-oscuro);
+}
+
+/* link de la página en la que se esta*/
+.menu-principal a[aria-current="page"] {
+    background: var(--amarillo);
+    color: #222;
+}
+
+
+.menu-principal__contador {
+    display: inline-block;
+    min-width: 22px;
+    margin-left: 4px;
+    padding: 0 6px;
+    border-radius: 11px;
+    background: var(--amarillo);
+    color: #222;
+    font-size: 14px;
+    text-align: center;
+}
+
+
+.menu-principal__contador[hidden] {
+    display: none;
+}
+
+
+.menu-principal a[aria-current="page"] .menu-principal__contador {
+    background: var(--verde);
+    color: white;
+}
+
+
+/* BOTONES */
+.boton {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.boton--primario {
+    background: var(--verde);
+    color: white;
+}
+
+.boton--primario:hover {
+    background: var(--verde-oscuro);
+}
+
+
+.boton--secundario {
+    background: white;
+    border-color: var(--verde);
+    color: var(--verde);
+}
+
+.boton--secundario:hover {
+    background: var(--verde);
+    color: white;
+}
+
+
+.boton--peligro {
+    background: white;
+    border-color: var(--rojo);
+    color: var(--rojo);
+}
+
+.boton--peligro:hover {
+    background: var(--rojo);
+    color: white;
+}
+
+
+.boton--chico {
+    padding: 2px 12px;
+    font-size: 18px;
+    line-height: 1.3;
+}
+
+.boton:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+
+/* MENSAJES (éxito y error) */
+.alerta {
+    margin: 0 0 15px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+
+.alerta[hidden] {
+    display: none;
+}
+
+.alerta--exito {
+    background: #e3f4e8;
+    border: 1px solid #9ccfae;
+    color: #1d5e33;
+}
+
+.alerta--error {
+    background: #fbe9e6;
+    border: 1px solid #e5b3aa;
+    color: var(--rojo);
+}
+
+
+/* INICIO */
+.banner-inicio picture {
+    display: block;
+}
+
+.banner-inicio img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.servicio-destacado {
+    max-width: 600px;
+    padding: 20px;
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+}
+
+.servicio-destacado h3 {
+    margin-top: 0;
+}
+
+
+/* CATÁLOGO: FILTROS */
+.filtros-catalogo {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 15px;
+    padding: 15px;
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+}
+
+/* cada div tiene una etiqueta y su campo */
+.filtros-catalogo div {
+    display: grid;
+    gap: 5px;
+}
+
+.filtros-catalogo label {
+    font-weight: bold;
+}
+
+.filtros-catalogo input,
+.filtros-catalogo select {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid var(--borde);
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.filtros-catalogo input:focus,
+.filtros-catalogo select:focus {
+    border-color: var(--verde);
+}
+
+.catalogo-resultados {
+    margin: 0 0 5px;
+}
+
+.catalogo-aviso {
+    margin: 0 0 15px;
+    font-weight: bold;
+    color: var(--verde);
+}
+
+
+/* CATÁLOGO: PRODUCTOS */
+.grilla-productos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.tarjeta-producto {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tarjeta-producto h3 {
+    margin: 0;
+    padding: 15px 15px 10px;
+    font-size: 20px;
+}
+
+.tarjeta-producto picture {
+    display: block;
+}
+
+.tarjeta-producto img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.tarjeta-producto p {
+    margin: 0;
+    padding: 15px 15px 5px;
+}
+
+.tarjeta-producto ul {
+    margin-bottom: auto;
+    padding: 0 15px;
+}
+
+.tarjeta-producto li {
+    padding: 3px 0;
+}
+
+/* el precio es el único li que se ve distinto, por eso tiene su clase */
+.tarjeta-producto__precio {
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--verde);
+}
+
+.tarjeta-producto .boton {
+    margin: 15px;
+}
+
+
+/* CARRITO */
+.carrito-vacio {
+    margin: 0;
+    padding: 20px;
+    background: white;
+    border: 1px dashed var(--borde);
+    border-radius: 10px;
+}
+
+.lista-carrito {
+    display: grid;
+    gap: 15px;
+}
+
+.item-carrito {
+    padding: 15px;
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+}
+
+.item-carrito h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.item-carrito p {
+    margin: 0;
+}
+
+.item-carrito__cantidad {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.item-carrito__subtotal {
+    font-weight: bold;
+}
+
+.item-carrito .boton--peligro {
+    margin-top: 10px;
+}
+
+.carrito-estado {
+    margin: 10px 0 0;
+}
+
+.total-carrito {
+    margin-top: 20px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background: var(--verde);
+    color: white;
+    text-align: right;
+}
+
+.total-carrito h3 {
+    margin: 0;
+    font-size: 22px;
+}
+
+
+/* FORMULARIOS */
+.formulario {
+    max-width: 700px;
+    padding: 20px;
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+}
+
+.formulario fieldset {
+    margin: 0 0 20px;
+    padding: 0;
+    border: 0;
+}
+
+.formulario legend {
+    padding: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--verde-oscuro);
+}
+
+
+.formulario__campo {
+    margin-bottom: 15px;
+}
+
+.formulario label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.formulario input,
+.formulario select,
+.formulario textarea {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid var(--borde);
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.formulario input:focus,
+.formulario select:focus,
+.formulario textarea:focus {
+    border-color: var(--verde);
+}
+
+.formulario textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+
+.formulario [aria-invalid="true"],
+.formulario [aria-invalid="true"]:focus {
+    border-color: var(--rojo);
+}
+
+/* mensaje de error debajo de cada campo */
+.formulario__error {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--rojo);
+}
+
+.formulario__error:empty {
+    display: none;
+}
+
+.formulario__acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* MAPA DE CONTACTO */
+.mapa-ubicacion iframe {
+    display: block;
+    width: 100%;
+    height: 300px;
+    border: 0;
+    border-radius: 10px;
+}
+
+
+/* CONFIRMACIÓN */
+.pagina-confirmacion {
+    max-width: 600px;
+}
+
+.pagina-confirmacion > p {
+    margin: 0 0 20px;
+    font-size: 18px;
+}
+
+.pagina-confirmacion > .boton {
+    margin-top: 20px;
+}
+
+.resumen-confirmacion {
+    padding: 20px;
+    background: white;
+    border: 1px solid var(--borde);
+    border-left: 6px solid var(--amarillo);
+    border-radius: 10px;
+}
+
+.resumen-confirmacion h2 {
+    margin-top: 0;
+}
+
+.resumen-confirmacion li {
+    padding: 8px 0;
+    border-top: 1px solid var(--borde);
+}
+
+
+/* FOOTER */
+.footer-principal {
+    padding: 20px 15px;
+    background: var(--verde-oscuro);
+    color: white;
+    text-align: center;
+}
+
+.footer-principal a {
+    color: var(--amarillo);
+    font-weight: bold;
+}
+
+
+/* MEDIA QUERIES */
+
+/* Tablet: pantallas de 768px o más */
+@media (min-width: 768px) {
+    .contenido-principal h1 {
+        font-size: 38px;
+    }
+
+
+    .header-principal {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 15px 40px;
+    }
+
+
+    .filtros-catalogo {
+        grid-template-columns: 2fr 1fr 1fr auto;
+        align-items: end;
+    }
+
+    .grilla-productos {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .item-carrito {
+        display: grid;
+        grid-template-columns: 2fr 2fr 1.3fr 1.3fr auto;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .item-carrito h3,
+    .item-carrito .boton--peligro {
+        margin: 0;
+    }
+
+
+    .formulario {
+        padding: 30px;
+    }
+
+    .formulario__campo {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 15px;
+    }
+
+    .formulario label {
+        margin: 0;
+        padding-top: 8px;
+    }
+
+
+    .formulario__error {
+        grid-column: 2;
+    }
+
+    .formulario__acciones {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .mapa-ubicacion iframe {
+        height: 450px;
+    }
+
+    .footer-principal {
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer-principal ul {
+        display: flex;
+        gap: 40px;
+    }
+}
+
+/* Compu: pantallas de 1024px o más */
+@media (min-width: 1024px) {
+    .grilla-productos {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .banner-inicio img {
+        max-height: 400px;
+        object-fit: cover;
+    }
+}
