@@ -50,7 +50,7 @@ export async function iniciarCarrito() {
     const aviso = document.querySelector("#carrito-aviso");
     const selectPago = document.querySelector("#id-metodo-pago");
 
-    //  Trae los datos del JSON
+    //  Traer los datos del JSON
     let productos = [];
     try {
         const datosProductos = await cargarJSON(URL_PRODUCTOS);
@@ -80,7 +80,7 @@ export async function iniciarCarrito() {
         return items.reduce(function (suma, i) { return suma + i.precio * i.cantidad; }, 0);
     }
 
-    //  Dibujar el carrito
+    // Dibujar el carrito
     function mostrarCarrito() {
         const items = obtenerItems();
 
@@ -92,7 +92,7 @@ export async function iniciarCarrito() {
     }
     mostrarCarrito();
 
-    //  Botones de cada producto (sumar, restar, eliminar)
+    // 3. Botones de cada producto (sumar, restar, eliminar)
     lista.addEventListener("click", function (evento) {
         const boton = evento.target.closest("[data-accion]");
         if (!boton) return;
@@ -115,7 +115,7 @@ export async function iniciarCarrito() {
     activarValidacionEnVivo(REGLAS);
 
     formulario.addEventListener("submit", function (evento) {
-        evento.preventDefault(); o
+        evento.preventDefault();   // se frena el envío para controlar los datos primero
         aviso.hidden = true;
 
         const datosValidos = validarFormulario(REGLAS);
