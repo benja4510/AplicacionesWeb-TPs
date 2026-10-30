@@ -1,18 +1,16 @@
-// Página del catálogo: muestra los productos del JSON,
-// los filtra y permite agregarlos al carrito.
+// Página del catálogo: JavaScript dibuja toda la sección
+// (título, filtros, mensajes y productos) y maneja sus eventos.
 
-import { cargarJSON } from "./api.js";
+import { productos } from "../datos/productos.js";
 import { formatearPrecio, normalizar } from "./formato.js";
 import { agregarProducto } from "./carritoDatos.js";
 import { actualizarContador } from "./contador.js";
 
-const URL_PRODUCTOS = "./recursos/datos/productos.json";
-
 // Devuelve solo los productos que cumplen los filtros, en el orden elegido
-export function filtrarProductos(productos, filtros) {
+export function filtrarProductos(lista, filtros) {
     const buscado = normalizar(filtros.texto.trim());
 
-    const resultado = productos.filter(function (p) {
+    const resultado = lista.filter(function (p) {
         const coincideTexto = normalizar(p.nombre + " " + p.descripcion).includes(buscado);
         const coincideCategoria = filtros.categoria === "todas" || p.categoria === filtros.categoria;
         return coincideTexto && coincideCategoria;
@@ -46,7 +44,58 @@ function crearTarjeta(p) {
     </article>`;
 }
 
-export async function iniciarCatalogo() {
+// Arma el formulario de filtros. Las categorías salen de los datos.
+function crearFiltros(categorias) {
+    const opciones = categorias.map(function (categoria) {
+        return `<option value="${categoria}">${categoria}</option>`;
+    }).join("");
+
+    return `
+    <form class="filtros-catalogo" id="filtros-form" aria-label="Filtrar productos">
+        <div>
+            <label for="filtro-texto">Buscar:</label>
+            <input type="search" id="filtro-texto" placeholder="Ej: correa">
+        </div>
+
+        <div>
+            <label for="filtro-categoria">Categoría:</label>
+            <select id="filtro-categoria">
+                <option value="todas">Todas</option>
+                ${opciones}
+            </select>
+        </div>
+
+        <div>
+            <label for="filtro-orden">Ordenar por:</label>
+            <select id="filtro-orden">
+                <option value="">Sin orden</option>
+                <option value="precio-asc">Precio: menor a mayor</option>
+                <option value="precio-desc">Precio: mayor a menor</option>
+                <option value="nombre">Nombre (A-Z)</option>
+            </select>
+        </div>
+
+        <button class="boton boton--secundario" type="button" id="filtro-limpiar">Limpiar filtros</button>
+    </form>`;
+}
+
+// Arma toda la sección del catálogo
+function crearSeccion(categorias) {
+    return `
+    <h2>Productos</h2>
+    ${crearFiltros(categorias)}
+    <p class="catalogo-resultados" id="catalogo-mensaje" role="status" aria-live="polite"></p>
+    <p class="catalogo-aviso" id="catalogo-aviso" role="status" aria-live="polite"></p>
+    <div class="grilla-productos" id="catalogo-grilla"></div>`;
+}
+
+export function iniciarCatalogo() {
+    const seccion = document.querySelector("#catalogo-seccion");
+
+    //  Dibujar la sección completa (las categorías salen de los productos, sin repetir)
+    const categorias = [...new Set(productos.map(function (p) { return p.categoria; }))];
+    seccion.innerHTML = crearSeccion(categorias);
+
     const grilla = document.querySelector("#catalogo-grilla");
     const mensaje = document.querySelector("#catalogo-mensaje");
     const aviso = document.querySelector("#catalogo-aviso");
@@ -55,23 +104,6 @@ export async function iniciarCatalogo() {
     const selectCategoria = document.querySelector("#filtro-categoria");
     const selectOrden = document.querySelector("#filtro-orden");
     const botonLimpiar = document.querySelector("#filtro-limpiar");
-
-    //Trae los productos del JSON
-    let productos = [];
-    try {
-        const datos = await cargarJSON(URL_PRODUCTOS);
-        productos = datos.productos;
-    } catch (error) {
-        console.error(error);
-        mensaje.textContent = "No se pudieron cargar los productos. Probá de nuevo más tarde.";
-        return;
-    }
-
-    // Llenar el filtro de categorías con las que hay en el JSON (sin repetir)
-    const categorias = [...new Set(productos.map(function (p) { return p.categoria; }))];
-    categorias.forEach(function (categoria) {
-        selectCategoria.add(new Option(categoria, categoria));
-    });
 
     //  Mostrar los productos aplicando los filtros
     function actualizar() {

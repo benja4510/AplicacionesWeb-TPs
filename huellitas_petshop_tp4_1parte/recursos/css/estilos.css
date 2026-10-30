@@ -1,5 +1,4 @@
-/*
-
+/* 
    NOMBRES DE CLASES
    - Los componentes usan BEM: bloque__elemento--modificador.
      Los bloques tienen nombres con sentido, que dicen qué son
@@ -8,7 +7,7 @@
      que están adentro de un bloque (a, img, h3, p, li...) se estilizan con
      selectores combinados, sin ponerles una clase a cada una:
          .menu-principal a      en vez de      .menu-principal__enlace
-   - Se reserva las clases BEM (__elemento o --modificador) para lo que
+   - Se reservan las clases BEM (__elemento o --modificador) para lo que
      realmente hace falta distinguir, por ejemplo .boton--peligro.
 
    El diseño está hecho primero para celular y, con media queries,
@@ -16,7 +15,7 @@
 */
 
 
-/* COLORES (los defino una vez y los uso en toda la página) */
+/* COLORES  */
 :root {
     --verde: #0f5c63;
     --verde-oscuro: #0a4147;
@@ -132,13 +131,13 @@ a {
     background: var(--verde-oscuro);
 }
 
-/* link de la página en la que se esta*/
+/* link de la página en la que estoy*/
 .menu-principal a[aria-current="page"] {
     background: var(--amarillo);
     color: #222;
 }
 
-
+/* numerito del carrito */
 .menu-principal__contador {
     display: inline-block;
     min-width: 22px;
@@ -467,7 +466,7 @@ a {
     color: var(--verde-oscuro);
 }
 
-
+/* cada campo: etiqueta + control + mensaje de error */
 .formulario__campo {
     margin-bottom: 15px;
 }
@@ -495,12 +494,13 @@ a {
     border-color: var(--verde);
 }
 
+/* el cuadro de comentario */
 .formulario textarea {
     min-height: 100px;
     resize: vertical;
 }
 
-
+/* campo con error: el JavaScript le pone aria-invalid="true" */
 .formulario [aria-invalid="true"],
 .formulario [aria-invalid="true"]:focus {
     border-color: var(--rojo);
@@ -589,24 +589,25 @@ a {
         font-size: 38px;
     }
 
-
+    /* el logo queda a la izquierda y el menú a la derecha */
     .header-principal {
         flex-direction: row;
         justify-content: space-between;
         padding: 15px 40px;
     }
 
-
+    /* los filtros quedan en una fila */
     .filtros-catalogo {
         grid-template-columns: 2fr 1fr 1fr auto;
         align-items: end;
     }
 
+    /* el catálogo pasa a 2 columnas */
     .grilla-productos {
         grid-template-columns: 1fr 1fr;
     }
 
-
+    /* cada producto del carrito queda en una sola fila */
     .item-carrito {
         display: grid;
         grid-template-columns: 2fr 2fr 1.3fr 1.3fr auto;
@@ -619,7 +620,7 @@ a {
         margin: 0;
     }
 
-
+    /* en los formularios la etiqueta va al lado del campo */
     .formulario {
         padding: 30px;
     }
@@ -662,6 +663,7 @@ a {
 
 /* Compu: pantallas de 1024px o más */
 @media (min-width: 1024px) {
+    /* el catálogo pasa a 3 columnas */
     .grilla-productos {
         grid-template-columns: 1fr 1fr 1fr;
     }

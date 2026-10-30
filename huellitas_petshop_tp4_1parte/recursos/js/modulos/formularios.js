@@ -7,7 +7,6 @@ function mostrarError(campo, mensaje) {
     const error = document.getElementById("error-" + campo.id);
     if (error) error.textContent = mensaje;
 
-    // El CSS usa este atributo para pintar el borde rojo
     campo.setAttribute("aria-invalid", "true");
 }
 

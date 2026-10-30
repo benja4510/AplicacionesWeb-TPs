@@ -1,12 +1,10 @@
-// Página de servicios: las opciones del select vienen del JSON
+// Página de servicios: las opciones del select vienen del módulo de datos
 // y el formulario de reserva se valida antes de continuar.
 
-import { cargarJSON } from "./api.js";
+import { servicios } from "../datos/servicios.js";
 import { guardarOperacion } from "./almacenamiento.js";
 import { validarNombre, validarServicio, validarFecha, validarHora, fechaHoyISO } from "./validaciones.js";
 import { validarFormulario, activarValidacionEnVivo } from "./formularios.js";
-
-const URL_SERVICIOS = "./recursos/datos/servicios.json";
 
 const REGLAS = {
     "id-nombre-dueno": validarNombre,
@@ -15,27 +13,18 @@ const REGLAS = {
     "id-hora": validarHora
 };
 
-export async function iniciarServicios() {
+export function iniciarServicios() {
     const formulario = document.querySelector("#form-reserva");
-    const aviso = document.querySelector("#servicios-aviso");
     const selectServicio = document.querySelector("#id-servicio-tipo");
     const inputFecha = document.querySelector("#id-fecha");
 
     // No deja elegir fechas pasadas en el calendario
     inputFecha.min = fechaHoyISO();
 
-    // Llenar el select con los servicios del JSON
-    try {
-        const datos = await cargarJSON(URL_SERVICIOS);
-        datos.servicios.forEach(function (servicio) {
-            selectServicio.add(new Option(servicio.nombre, servicio.id));
-        });
-    } catch (error) {
-        console.error(error);
-        aviso.textContent = "No se pudieron cargar los servicios. Probá de nuevo más tarde.";
-        aviso.hidden = false;
-        return;
-    }
+    // Llenar el select con los servicios
+    servicios.forEach(function (servicio) {
+        selectServicio.add(new Option(servicio.nombre, servicio.id));
+    });
 
     activarValidacionEnVivo(REGLAS);
 

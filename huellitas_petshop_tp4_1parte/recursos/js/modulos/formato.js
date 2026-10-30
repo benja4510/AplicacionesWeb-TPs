@@ -1,6 +1,6 @@
 // Funciones chicas para dar formato a textos y precios
 
-
+// 13500 -> "$13.500"
 export function formatearPrecio(numero) {
     return "$" + numero.toLocaleString("es-AR");
 }
@@ -21,7 +21,7 @@ export function escaparHTML(texto) {
         .replace(/'/g, "&#39;");
 }
 
-// "2026-10-30" -> "30/10/2026"
+
 export function formatearFecha(fechaISO) {
     const [anio, mes, dia] = fechaISO.split("-");
     return dia + "/" + mes + "/" + anio;

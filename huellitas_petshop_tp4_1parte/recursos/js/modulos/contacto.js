@@ -26,14 +26,12 @@ export function iniciarContacto() {
 
         const nombre = document.querySelector("#id-nombre").value.trim();
 
-        // Primero se limpia el formulario y recién después se muestra el mensaje,
-        // porque reset() también esconde el mensaje (ver más abajo)
+      
         formulario.reset();
         aviso.innerHTML = "¡Gracias, " + escaparHTML(nombre) + "! Recibimos tu consulta y te vamos a responder pronto.";
         aviso.hidden = false;
     });
 
-    // El botón "Limpiar" también borra los mensajes de error
     formulario.addEventListener("reset", function () {
         limpiarErrores(REGLAS);
         aviso.hidden = true;

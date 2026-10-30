@@ -1,16 +1,14 @@
 // Página del carrito: muestra lo que se agregó, calcula el total
 // y valida el formulario de entrega y pago.
 
-import { cargarJSON } from "./api.js";
+import { productos } from "../datos/productos.js";
+import { mediosPago } from "../datos/mediosPago.js";
 import { formatearPrecio } from "./formato.js";
 import { obtenerCarrito, cambiarCantidad, eliminarProducto, vaciarCarrito } from "./carritoDatos.js";
 import { actualizarContador } from "./contador.js";
 import { guardarOperacion } from "./almacenamiento.js";
 import { validarNombre, validarEmail, validarDireccion } from "./validaciones.js";
 import { validarFormulario, activarValidacionEnVivo } from "./formularios.js";
-
-const URL_PRODUCTOS = "./recursos/datos/productos.json";
-const URL_MEDIOS_PAGO = "./recursos/datos/mediosPago.json";
 
 // Campo del formulario -> regla que lo controla
 const REGLAS = {
@@ -40,7 +38,7 @@ function crearItem(item) {
     </li>`;
 }
 
-export async function iniciarCarrito() {
+export function iniciarCarrito() {
     const lista = document.querySelector("#carrito-lista");
     const vacio = document.querySelector("#carrito-vacio");
     const estado = document.querySelector("#carrito-estado");
@@ -50,21 +48,10 @@ export async function iniciarCarrito() {
     const aviso = document.querySelector("#carrito-aviso");
     const selectPago = document.querySelector("#id-metodo-pago");
 
-    //  Traer los datos del JSON
-    let productos = [];
-    try {
-        const datosProductos = await cargarJSON(URL_PRODUCTOS);
-        const datosPago = await cargarJSON(URL_MEDIOS_PAGO);
-
-        productos = datosProductos.productos;
-        datosPago.mediosPago.forEach(function (medio) {
-            selectPago.add(new Option(medio.nombre, medio.id));
-        });
-    } catch (error) {
-        console.error(error);
-        estado.textContent = "No se pudo cargar el carrito. Probá de nuevo más tarde.";
-        return;
-    }
+    // 1. Llenar el selector con los medios de pago
+    mediosPago.forEach(function (medio) {
+        selectPago.add(new Option(medio.nombre, medio.id));
+    });
 
     // Junta lo guardado en el carrito con los datos de cada producto
     function obtenerItems() {
@@ -80,7 +67,7 @@ export async function iniciarCarrito() {
         return items.reduce(function (suma, i) { return suma + i.precio * i.cantidad; }, 0);
     }
 
-    // Dibujar el carrito
+    // 2. Dibujar el carrito
     function mostrarCarrito() {
         const items = obtenerItems();
 
@@ -111,7 +98,7 @@ export async function iniciarCarrito() {
         mostrarCarrito();
     });
 
-    // Formulario
+    // 4. Formulario
     activarValidacionEnVivo(REGLAS);
 
     formulario.addEventListener("submit", function (evento) {

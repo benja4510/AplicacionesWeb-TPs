@@ -1,6 +1,6 @@
 // Maneja los productos del carrito.
 // Cada producto se guarda como { id, cantidad }; el resto de los datos
-// (nombre, precio) se buscan después en productos.json.
+// (nombre, precio) se buscan después en datos/productos.js.
 
 import { leer, guardar } from "./almacenamiento.js";
 

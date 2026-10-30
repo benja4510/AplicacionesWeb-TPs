@@ -38,7 +38,7 @@ export function validarTelefono(valor) {
     return "";
 }
 
-
+// La edad de la mascota es opcional
 export function validarEdad(valor) {
     if (valor === "") return "";
 
@@ -57,7 +57,7 @@ export function validarServicio(valor) {
     return valor === "" ? "Elegí un servicio." : "";
 }
 
-// Devuelve la fecha de hoy como "2026-10-27", que es el formato del input date
+
 export function fechaHoyISO() {
     const hoy = new Date();
     const mes = String(hoy.getMonth() + 1).padStart(2, "0");

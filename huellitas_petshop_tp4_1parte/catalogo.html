@@ -27,41 +27,8 @@
     <main class="contenido-principal">
         <h1>Catalogo</h1>
 
-        <section>
-            <h2>Productos</h2>
-
-            <form class="filtros-catalogo" id="filtros-form" aria-label="Filtrar productos">
-                <div>
-                    <label for="filtro-texto">Buscar:</label>
-                    <input type="search" id="filtro-texto" placeholder="Ej: correa">
-                </div>
-
-                <div>
-                    <label for="filtro-categoria">Categoría:</label>
-                    <select id="filtro-categoria">
-                        <option value="todas">Todas</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="filtro-orden">Ordenar por:</label>
-                    <select id="filtro-orden">
-                        <option value="">Sin orden</option>
-                        <option value="precio-asc">Precio: menor a mayor</option>
-                        <option value="precio-desc">Precio: mayor a menor</option>
-                        <option value="nombre">Nombre (A-Z)</option>
-                    </select>
-                </div>
-
-                <button class="boton boton--secundario" type="button" id="filtro-limpiar">Limpiar filtros</button>
-            </form>
-
-            <p class="catalogo-resultados" id="catalogo-mensaje" role="status" aria-live="polite"></p>
-            <p class="catalogo-aviso" id="catalogo-aviso" role="status" aria-live="polite"></p>
-
-            <div class="grilla-productos" id="catalogo-grilla"></div>
-            <noscript><p class="alerta alerta--error">Para ver los productos necesitás activar JavaScript.</p></noscript>
-        </section>
+        <section id="catalogo-seccion"></section>
+        <noscript><p class="alerta alerta--error">Para ver los productos necesitás activar JavaScript.</p></noscript>
     </main>
 
     <footer class="footer-principal">
