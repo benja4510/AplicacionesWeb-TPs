@@ -1,0 +1,14 @@
+[
+  {
+    "id": "bano",
+    "nombre": "Baño"
+  },
+  {
+    "id": "peluqueria",
+    "nombre": "Peluquería"
+  },
+  {
+    "id": "completo",
+    "nombre": "Baño y Peluquería Completo"
+  }
+]
