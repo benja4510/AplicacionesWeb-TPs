@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huellitas - Carrito de Compras</title>
+    <link rel="stylesheet" href="./recursos/css/estilos.css">
+    <script type="module" src="./recursos/js/main.js"></script>
+</head>
+<body class="pagina-huellitas" data-pagina="carrito">
+    <header class="header-principal">
+        <a class="header-principal__logo" href="./index.html" aria-label="Ir a Inicio">
+            <img src="./recursos/imagenes/huella.png" alt="logo tienda" width="60" height="60">
+        </a>
+
+        <nav class="menu-principal" aria-label="Navegación principal">
+            <ul>
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./catalogo.html">Catalogo</a></li>
+                <li><a href="./servicios.html">Servicios</a></li>
+                <li><a href="./carrito.html" aria-current="page">Carrito <span class="menu-principal__contador" data-contador-carrito hidden>0</span></a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenido-principal">
+        <h1>Tu Carrito de Compras</h1>
+
+        <section>
+            <h2>Productos Seleccionados</h2>
+            <p class="carrito-vacio" id="carrito-vacio" hidden>Tu carrito está vacío. <a href="./catalogo.html">Ir al catálogo</a></p>
+            <ul class="lista-carrito" id="carrito-lista"></ul>
+            <p class="carrito-estado" id="carrito-estado" role="status" aria-live="polite"></p>
+
+            <div class="total-carrito" id="carrito-total-caja" hidden>
+                <h3>Total a Pagar: <span id="carrito-total">$0</span></h3>
+            </div>
+        </section>
+
+        <section>
+            <h2>Datos para la Entrega y Pago</h2>
+            <form class="formulario" id="form-compra" action="./confirmacion.html" method="get" novalidate>
+                <fieldset>
+                    <legend>Información Personal y Envío</legend>
+
+                    <div class="formulario__campo">
+                        <label for="id-nombre-compra">Nombre Completo:</label>
+                        <input type="text" id="id-nombre-compra" name="nombre_comprador" required aria-describedby="error-id-nombre-compra">
+                        <p class="formulario__error" id="error-id-nombre-compra"></p>
+                    </div>
+
+                    <div class="formulario__campo">
+                        <label for="id-email">Correo Electrónico:</label>
+                        <input type="email" id="id-email" name="email" required aria-describedby="error-id-email">
+                        <p class="formulario__error" id="error-id-email"></p>
+                    </div>
+
+                    <div class="formulario__campo">
+                        <label for="id-direccion">Dirección de Entrega:</label>
+                        <input type="text" id="id-direccion" name="direccion" required aria-describedby="error-id-direccion">
+                        <p class="formulario__error" id="error-id-direccion"></p>
+                    </div>
+
+                    <div class="formulario__campo">
+                        <label for="id-metodo-pago">Medio de Pago:</label>
+                        <select id="id-metodo-pago" name="metodo_pago"></select>
+                    </div>
+                </fieldset>
+
+                <p class="alerta alerta--error" id="carrito-aviso" role="alert" hidden></p>
+
+                <div class="formulario__acciones">
+                    <a class="boton boton--secundario" href="./catalogo.html">Seguir Comprando</a>
+                    <button class="boton boton--primario" type="submit">Finalizar Compra</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer-principal">
+        <ul>
+            <li>
+                <a href="https://instagram.com/@Huellitas" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Huellitas">
+                    @Huellitas
+                </a>
+            </li>
+            <li>
+                San Lorenzo 600 - Bº Nueva Cordoba
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>

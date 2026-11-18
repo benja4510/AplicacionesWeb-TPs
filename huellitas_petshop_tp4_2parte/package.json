@@ -1,0 +1,10 @@
+{
+  "name": "huellitas-petshop",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Huellitas Pet Shop - TP4 Aplicaciones Web I",
+  "scripts": {
+    "test": "node --test"
+  }
+}

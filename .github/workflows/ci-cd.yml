@@ -1,0 +1,59 @@
+name: CI/CD Huellitas
+
+# Se ejecuta en cada push a main y en cada pull request hacia main.
+# Solo si cambia algo de la carpeta del proyecto (o este mismo archivo).
+on:
+  push:
+    branches: [main]
+    paths:
+      - "huellitas_petshop_tp4_2parte/**"
+      - ".github/workflows/ci-cd.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "huellitas_petshop_tp4_2parte/**"
+      - ".github/workflows/ci-cd.yml"
+
+jobs:
+  # 1) CI: tests unitarios con el test runner nativo de Node (node --test)
+  test:
+    name: Tests unitarios
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Ejecutar tests (node --test)
+        working-directory: huellitas_petshop_tp4_2parte
+        run: npm test
+
+  # 2) CD: si los tests pasan y es un push a main, se despliega a producción en Vercel
+  deploy:
+    name: Deploy a producción (Vercel)
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Instalar Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Traer la configuración del proyecto
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Construir
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Publicar en producción
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
